@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Notebook</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <header>
+                <h1>Notebook</h1>
+            </header>
+            <div class="controls">
+                <button id="save-note-button">Save Note</button>
+                <button id="clear-notes-button">Clear All Notes</button>
+                <button id="themeToggle">Toggle Theme</button>
+                <input type="color" id="textColorPicker">
+            </div>
+            <div id="notes-library">
+                <!-- Note titles will be displayed here -->
+            </div>
+        </aside>
+        
+        <main class="content">
+            <section id="note-input-section">
+                <h2>Create a Note</h2>
+                <input type="text" id="note-title" placeholder="Note Title">
+                <textarea id="note-content" placeholder="Write your note here..."></textarea>
+            </section>
+
+            <section id="notes-list-section">
+                <h2>Your Notes</h2>
+                <div id="notes-list">
+                    <!-- Notes will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
