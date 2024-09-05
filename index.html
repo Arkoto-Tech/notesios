@@ -9,7 +9,11 @@
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <!-- Button to toggle the sidebar -->
+        <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+        
+        <!-- Sidebar wrapped in a nav element to act as the slide-out menu -->
+        <nav class="sidebar" id="sidebar">
             <header>
                 <h1>Notebook</h1>
             </header>
@@ -22,7 +26,7 @@
             <div id="notes-library">
                 <!-- Note titles will be displayed here -->
             </div>
-        </aside>
+        </nav>
         
         <main class="content">
             <section id="note-input-section">
@@ -42,4 +46,9 @@
 
     <script src="script.js"></script>
 </body>
+<body>
+    <!-- Other HTML elements... -->
+    <div id="overlay"></div>
+</body>
+
 </html>
