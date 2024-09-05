@@ -14,7 +14,76 @@ body {
     height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
-    overflow: hidden;
+    overflow: hidden; /* Disable body scrolling when sidebar is open */
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden off-screen */
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 10; /* Keep above other content */
+}
+
+/* Sidebar visible state */
+.sidebar.open {
+    left: 0; /* Move into view */
+}
+
+/* Button to toggle the sidebar */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 20; /* Above everything */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.menu-toggle:hover {
+    background-color: #333;
+}
+
+/* Content shift when sidebar is open */
+.content {
+    padding: 20px;
+    flex-grow: 1;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+    margin-left: 250px; /* Shift content when sidebar is open */
+}
+
+/* Overlay effect */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+#overlay.visible {
+    display: block;
 }
 
 /* Light and Dark Mode styling */
@@ -28,6 +97,7 @@ body.dark-mode {
     color: #f4f4f4;
 }
 
+/* Container styling */
 .container {
     display: flex;
     width: 100vw;
@@ -37,7 +107,6 @@ body.dark-mode {
     border-radius: 10px;
     overflow: hidden;
     transition: background-color 0.3s;
-    flex-direction: row;
 }
 
 .container.light-mode {
@@ -48,24 +117,13 @@ body.dark-mode {
     background-color: #444;
 }
 
-/* Sidebar styling */
-.sidebar {
-    width: 250px;
-    background-color: var(--sidebar-bg, #333);
-    color: var(--sidebar-color, white);
+/* Sidebar control buttons */
+.controls {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 20px;
+    gap: 10px;
 }
 
-.sidebar header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Button styling */
 button {
     padding: 12px;
     background-color: #000;
@@ -92,21 +150,9 @@ button#clear-notes-button:hover {
     background-color: #c82333;
 }
 
-/* Main content styling */
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#note-input-section, #notes-list-section {
-    width: 100%;
-}
-
-input[type="text"] {
+/* Note input styling */
+#note-input-section input,
+#note-input-section textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -116,23 +162,15 @@ input[type="text"] {
 }
 
 textarea {
-    width: 100%;
     height: 150px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
     font-family: monospace;
-    white-space: pre-wrap;
-    margin-bottom: 20px;
 }
 
-/* Notes list section */
+/* Notes list */
 #notes-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    overflow-y: auto;
 }
 
 .note {
@@ -159,14 +197,14 @@ textarea {
 .note-title {
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 10px;
 }
 
 .note-content {
     display: block;
 }
 
-.note .note-button {
+/* Note buttons (edit/delete) */
+.note-button {
     position: absolute;
     top: 10px;
     padding: 6px 12px;
@@ -196,107 +234,29 @@ textarea {
     transform: scale(1.05);
 }
 
-.note .save-edit-button {
-    right: 80px;
-    background-color: #28a745;
-}
-
-.note .save-edit-button:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
-
-.note-button-container {
-    display: flex;
-    gap: 10px;
-}
-
-.note.closed .note-content {
-    display: none;
-}
-
-/* Media Query for Mobile */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        overflow-y: auto;
-    }
-
     .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 10px;
+        width: 200px;
+        left: -200px;
     }
 
-    .controls {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .content {
-        padding: 10px;
-    }
-
-    button {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-    textarea, input[type="text"] {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .note-title {
-        font-size: 16px;
-    }
-
-    .note {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .note-button {
-        padding: 5px;
-    }
-
-    .note-content {
-        font-size: 14px;
+    .content.shifted {
+        margin-left: 200px;
     }
 }
 
 @media (max-width: 480px) {
-    button {
-        font-size: 10px;
-        padding: 8px;
-    }
-
-    .controls {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    textarea, input[type="text"] {
-        font-size: 12px;
-        padding: 6px;
-    }
-
-    .note-title {
+    .menu-toggle {
         font-size: 14px;
+        padding: 8px 12px;
     }
 
-    .note {
-        padding: 8px;
+    .sidebar {
+        width: 180px;
+        left: -180px;
     }
 
-    .note-button {
-        padding: 4px;
-    }
-
-    .note-content {
-        font-size: 12px;
+    .content.shifted {
+        margin-left: 180px;
     }
 }
