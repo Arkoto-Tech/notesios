@@ -99,7 +99,7 @@ body.dark-mode {
     border-radius: 10px;
     overflow: hidden;
     transition: background-color 0.3s;
-    margin-top: 60px; /* Add margin-top to shift container down */
+    margin-top: 300px; /* Add margin-top to shift container down */
 }
 
 .container.light-mode {
