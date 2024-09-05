@@ -7,7 +7,6 @@ body {
     height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
-    overflow: hidden; /* Remove this line */
 }
 
 /* Sidebar styling */
@@ -57,7 +56,6 @@ body {
     padding: 20px;
     flex-grow: 1;
     margin-left: 0;
-    margin-top: 60px; /* Add margin-top to shift content down */
     transition: margin-left 0.3s ease;
     overflow-y: auto; /* Allow scrolling in the content area */
 }
@@ -99,7 +97,7 @@ body.dark-mode {
     border-radius: 10px;
     overflow: hidden;
     transition: background-color 0.3s;
-    margin-top: 300px; /* Add margin-top to shift container down */
+    padding-top: 60px; /* Add padding-top to shift container content down */
 }
 
 .container.light-mode {
