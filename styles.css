@@ -14,7 +14,6 @@ body {
     height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
-    overflow: hidden; /* Disable body scrolling when sidebar is open */
 }
 
 /* Sidebar styling */
@@ -32,6 +31,7 @@ body {
     height: 100vh;
     transition: left 0.3s ease;
     z-index: 10; /* Keep above other content */
+    overflow-y: auto; /* Allow scrolling within the sidebar if needed */
 }
 
 /* Sidebar visible state */
@@ -64,10 +64,7 @@ body {
     flex-grow: 1;
     margin-left: 0;
     transition: margin-left 0.3s ease;
-}
-
-.content.shifted {
-    margin-left: 250px; /* Shift content when sidebar is open */
+    overflow-y: auto; /* Allow scrolling in the content area */
 }
 
 /* Overlay effect */
