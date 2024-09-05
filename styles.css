@@ -14,6 +14,7 @@ body {
     height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
+    overflow: hidden; /* Remove this line */
 }
 
 /* Sidebar styling */
@@ -31,7 +32,7 @@ body {
     height: 100vh;
     transition: left 0.3s ease;
     z-index: 10; /* Keep above other content */
-    overflow-y: auto; /* Allow scrolling within the sidebar if needed */
+    overflow-y: auto; /* Allow scrolling within the sidebar */
 }
 
 /* Sidebar visible state */
