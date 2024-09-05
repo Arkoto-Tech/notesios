@@ -172,3 +172,37 @@ document.getElementById('textColorPicker').addEventListener('input', changeTextC
 
 // Load existing notes on page load
 window.onload = loadNotes;
+
+// Function to toggle the sidebar visibility
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.querySelector('.content');
+    const overlay = document.getElementById('overlay');
+
+    // Toggle sidebar open class
+    sidebar.classList.toggle('open');
+    content.classList.toggle('shifted');
+    
+    // Show or hide the overlay
+    overlay.classList.toggle('visible');
+}
+
+// Function to close the sidebar when clicking outside
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.querySelector('.content');
+    const overlay = document.getElementById('overlay');
+
+    sidebar.classList.remove('open');
+    content.classList.remove('shifted');
+    overlay.classList.remove('visible');
+}
+
+// Add event listener for the menu toggle button
+document.getElementById('menu-toggle').addEventListener('click', toggleSidebar);
+
+// Add overlay to close sidebar when clicked
+document.getElementById('overlay').addEventListener('click', closeSidebar);
+
+// Load existing notes on page load
+window.onload = loadNotes;
