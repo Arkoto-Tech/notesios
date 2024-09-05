@@ -1,3 +1,10 @@
+/* Reset some basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* General styling */
 body {
     font-family: Arial, sans-serif;
@@ -57,7 +64,6 @@ body {
     padding: 20px;
     flex-grow: 1;
     margin-left: 0;
-    margin-top: 60px; /* Add margin-top to shift content down */
     transition: margin-left 0.3s ease;
     overflow-y: auto; /* Allow scrolling in the content area */
 }
@@ -99,7 +105,6 @@ body.dark-mode {
     border-radius: 10px;
     overflow: hidden;
     transition: background-color 0.3s;
-    margin-top: 60px; /* Add margin-top to shift container down */
 }
 
 .container.light-mode {
